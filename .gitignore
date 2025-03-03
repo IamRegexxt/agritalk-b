@@ -1,0 +1,14 @@
+# Ignore virtual environment directory
+.venv/
+
+# Ignore Python cache directory
+__pycache__/
+
+# Ignore Dockerfile (if you're not versioning your Docker image)
+# Dockerfile
+
+# Ignore .env file (contains sensitive environment variables)
+.env
+
+# Ignore secret key generator (if it contains sensitive information)
+secretkeygenerator.py
