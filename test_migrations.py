@@ -2,7 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import os
-
+##### for testing a connection only
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:iamthemaster@localhost/agritalk'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

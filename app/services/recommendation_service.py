@@ -1,34 +1,98 @@
 class RecommendationService:
     def __init__(self):
         self.recommendations = {
-            'Bacterial_Blight': {
-                'description': 'Bacterial blight is a serious disease caused by Xanthomonas oryzae pv. oryzae.',
-                'treatments': [
-                    'Use disease-resistant varieties',
-                    'Apply copper-based bactericides',
-                    'Ensure proper field drainage',
-                    'Remove infected plants and debris'
-                ]
+            'corn': {
+                'Blight': {
+                    'description': 'A fungal disease that causes long brown streaks on leaves.',
+                    'treatments': [
+                        'Apply fungicides containing pyraclostrobin',
+                        'Rotate crops to reduce disease pressure',
+                        'Plant resistant varieties',
+                        'Improve field drainage'
+                    ]
+                },
+                'Common Rust': {
+                    'description': 'Fungal disease causing small, circular brown pustules.',
+                    'treatments': [
+                        'Apply foliar fungicides',
+                        'Plant early in the season',
+                        'Use resistant hybrids',
+                        'Monitor humidity levels'
+                    ]
+                },
+                'Gray Leaf Spot': {
+                    'description': 'Fungal disease causing rectangular gray lesions.',
+                    'treatments': [
+                        'Rotate with non-host crops',
+                        'Apply fungicides preventively',
+                        'Improve air circulation',
+                        'Remove crop debris'
+                    ]
+                }
             },
-            'Brown_Spot': {
-                'description': 'Brown spot is caused by the fungus Cochliobolus miyabeanus.',
-                'treatments': [
-                    'Apply fungicides',
-                    'Maintain proper soil nutrients',
-                    'Avoid water stress',
-                    'Use certified disease-free seeds'
-                ]
+            'rice': {
+                'Blast': {
+                    'description': 'Fungal disease affecting leaves and panicles.',
+                    'treatments': [
+                        'Use resistant varieties',
+                        'Apply fungicides preventively',
+                        'Maintain proper water management',
+                        'Balance nitrogen fertilization'
+                    ]
+                },
+                'Bacterial Blight': {
+                    'description': 'Bacterial disease causing yellow to white lesions.',
+                    'treatments': [
+                        'Plant resistant varieties',
+                        'Use balanced fertilization',
+                        'Avoid excessive nitrogen',
+                        'Maintain proper spacing'
+                    ]
+                },
+                'Brown Spot': {
+                    'description': 'Fungal disease causing oval brown spots.',
+                    'treatments': [
+                        'Apply fungicides',
+                        'Maintain proper soil nutrients',
+                        'Avoid water stress',
+                        'Use certified seeds'
+                    ]
+                }
             },
-            'Leaf_Blast': {
-                'description': 'Rice blast is caused by the fungus Magnaporthe oryzae.',
-                'treatments': [
-                    'Use blast-resistant varieties',
-                    'Apply fungicides preventively',
-                    'Maintain proper water management',
-                    'Balance nitrogen fertilization'
-                ]
-            },
-            'Healthy': {
+            'tomato': {
+                'Early Blight': {
+                    'description': 'Fungal disease causing dark spots with concentric rings.',
+                    'treatments': [
+                        'Apply copper-based fungicides',
+                        'Remove infected leaves',
+                        'Improve air circulation',
+                        'Mulch around plants'
+                    ]
+                },
+                'Late Blight': {
+                    'description': 'Water mold causing dark, water-soaked lesions.',
+                    'treatments': [
+                        'Apply preventive fungicides',
+                        'Remove infected plants',
+                        'Avoid overhead irrigation',
+                        'Space plants properly'
+                    ]
+                },
+                'Leaf Mold': {
+                    'description': 'Fungal disease causing yellow spots and mold growth.',
+                    'treatments': [
+                        'Reduce humidity',
+                        'Improve ventilation',
+                        'Apply fungicides',
+                        'Remove infected leaves'
+                    ]
+                }
+            }
+        }
+    
+    def get_recommendations(self, crop_type, disease):
+        if disease == 'Healthy':
+            return {
                 'description': 'The plant appears healthy with no visible disease symptoms.',
                 'treatments': [
                     'Continue regular monitoring',
@@ -37,10 +101,8 @@ class RecommendationService:
                     'Ensure proper irrigation'
                 ]
             }
-        }
-    
-    def get_recommendations(self, disease):
-        return self.recommendations.get(disease, {
+            
+        return self.recommendations.get(crop_type, {}).get(disease, {
             'description': 'Unknown disease',
             'treatments': ['Consult a local agricultural expert']
         }) 

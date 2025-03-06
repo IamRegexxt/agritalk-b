@@ -10,7 +10,14 @@ migrate = Migrate(app, db)
 # Import all models to ensure they're tracked by migrations
 __all__ = ['User', 'Prediction', 'Feedback']
 
+CROP_TYPES = ['corn', 'rice', 'tomato']
+
+DISEASE_TYPES = {
+    'corn': ['Blight', 'Common Rust', 'Gray Leaf Spot', 'Healthy'],
+    'rice': ['Blast', 'Bacterial Blight', 'Brown Spot', 'Healthy'],
+    'tomato': ['Early Blight', 'Late Blight', 'Leaf Mold', 'Healthy']
+}
+
 if __name__ == '__main__':
     with app.app_context():
-        # Import all models here to ensure they're tracked by migrations
-        pass
+        db.create_all()

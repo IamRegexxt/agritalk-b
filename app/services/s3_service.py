@@ -3,6 +3,7 @@ import os
 from botocore.exceptions import ClientError
 from werkzeug.utils import secure_filename
 import uuid
+from app.utils.constants import CROP_TYPES
 
 class S3Service:
     def __init__(self):
@@ -14,11 +15,14 @@ class S3Service:
         )
         self.bucket_name = os.environ.get('AWS_BUCKET_NAME')
 
-    def upload_file(self, file):
+    def upload_file(self, file, crop_type):
+        if crop_type not in CROP_TYPES:
+            raise ValueError(f"Invalid crop type. Must be one of {CROP_TYPES}")
+            
         try:
-            # Generate unique filename
+            # Generate unique filename with crop type prefix
             ext = os.path.splitext(file.filename)[1]
-            filename = f"{str(uuid.uuid4())}{ext}"
+            filename = f"{crop_type}/{str(uuid.uuid4())}{ext}"
             
             # Upload to S3
             self.s3_client.upload_fileobj(
@@ -32,5 +36,5 @@ class S3Service:
             return f"https://{self.bucket_name}.s3.amazonaws.com/{filename}"
         
         except ClientError as e:
-            print(e)
+            print(f"S3 upload error: {str(e)}")
             return None 

@@ -7,7 +7,8 @@ class Feedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     prediction_id = db.Column(db.Integer, db.ForeignKey('predictions.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    accuracy_rating = db.Column(db.Integer, nullable=False)  # 1-5 rating
+    rating = db.Column(db.Integer)  # 1-5 stars
+    is_accurate = db.Column(db.Boolean)
     comments = db.Column(db.Text)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     
