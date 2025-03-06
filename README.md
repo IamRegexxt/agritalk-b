@@ -1,6 +1,4 @@
-# AgriMAN Backend
-
-This is the backend for the AgriMAN application, a system for rice crop disease identification.
+AgriTalk: AI-DRIVEN MOBILE APP FOR  PINOY FARMERS' CROP PEST AND DISEASE DETECTOR
 
 ## Setup Instructions
 
