@@ -1,0 +1,20 @@
+.git
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.DS_Store
+.env
+# === Logs/Temporary Files ===
+*.log
+*.tmp
+*.swp
+*.swo
+*.dump
+dump.rdb  # Redis dump file
+
+# === Python Packaging ===
+*.egg-info/
+dist/
+build/
+.venv

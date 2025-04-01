@@ -8,6 +8,7 @@ from app import db
 
 user_bp = Blueprint('user', __name__)
 
+
 @user_bp.route('/user/history', methods=['GET'])
 @jwt_required()
 def get_user_history():
@@ -34,6 +35,7 @@ def get_user_history():
         })
 
     return jsonify(history), 200
+
 
 @user_bp.route('/user/stats', methods=['GET'])
 @jwt_required()

@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify
 
 docs_bp = Blueprint('docs', __name__)
 
+
 @docs_bp.route('/docs', methods=['GET'])
 def get_api_docs():
     api_docs = {
@@ -95,5 +96,5 @@ def get_api_docs():
             }
         }
     }
-    
-    return jsonify(api_docs), 200 
+
+    return jsonify(api_docs), 200

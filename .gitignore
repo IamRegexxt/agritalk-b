@@ -12,3 +12,8 @@ __pycache__/
 
 # Ignore secret key generator (if it contains sensitive information)
 secretkeygenerator.py
+.idea
+migrations
+dump.rdb
+.dockerignore
+app/ml_models
