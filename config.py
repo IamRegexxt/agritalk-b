@@ -14,17 +14,16 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'your-secret-key'
     
     # Database config
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-        'postgresql://postgres:iamthemaster@localhost/agritalk'
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') # postgresql://postgres:iamthemaster@localhost/agritalk
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     
     # JWT config
     JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY') or 'jwt-secret-key'
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(minutes=30)  # As per security measures
     # CELERY config
-    REDIS_URL = os.environ.get('REDIS_URL', 'redis://localhost:6379/0')
-    CELERY_BROKER_URL = 'REDIS_URL'
-    CELERY_RESULT_BACKEND = 'REDIS_URL'
+    REDIS_URL = os.environ.get('REDIS_URL', 'redis://redis:6379/0')
+    CELERY_BROKER_URL = os.environ.get('REDIS_URL', 'redis://redis:6379/0')
+    CELERY_RESULT_BACKEND = os.environ.get('REDIS_URL', 'redis://redis:6379/0')
     
     # AWS S3 config for image storage
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
