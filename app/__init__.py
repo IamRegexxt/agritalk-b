@@ -40,4 +40,8 @@ def create_app(config_class=Config):
     app.register_blueprint(admin_bp, url_prefix='/api/admin')
     app.register_blueprint(docs_bp, url_prefix='/api/docs')
 
+    @app.route('/')
+    def index():
+        return "Welcome to the Plant Disease Prediction API!", 200
+
     return app
